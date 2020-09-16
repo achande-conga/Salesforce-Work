@@ -1,0 +1,71 @@
+<template>
+  <lightning-card title="Account Details Section" icon-name="custom:custom13">
+      <lightning-record-form
+      record-id={recordId}
+      object-api-name={objectApiName}
+      fields={fields}>
+    </lightning-record-form>
+  </lightning-card>
+    <lightning-card title="Customer Success - Contacts" icon-name="custom:custom13">
+        <template if:true={customerSuccessContacts.data}>
+            <table class="slds-table slds-table_bordered slds-border_left slds-border_right">
+                <thead>
+                  <tr class="slds-line-height_reset">
+                    <th class="" scope="col">
+                      <div class="slds-truncate" title="Last Name">Last Name</div>
+                    </th>
+                    <th class="" scope="col">
+                      <div class="slds-truncate" title="Title">Title</div>
+                    </th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <template for:each={customerSuccessContacts.data} for:item="custSuccCont">
+                    <tr key={custSuccCont.Id}>
+                        <th scope="col">
+                            <div>{custSuccCont.LastName}</div>
+                        </th>
+                        <th scope="col">
+                            <div>{custSuccCont.Title}</div>
+                        </th>
+                    </tr>
+                  </template>
+                </tbody>
+              </table>
+         </template>
+         <template if:false={customerSuccessContacts.data}>
+          <p>No Customer Success Contacts Found for this Account</p>
+         </template>
+        </lightning-card>
+        <lightning-card title="Application Developer - Contacts" icon-name="custom:custom14">
+         <template if:true={applicationDeveloperContacts.data}>
+            <table class="slds-table slds-table_bordered slds-border_left slds-border_right">
+                <thead>
+                  <tr class="slds-line-height_reset">
+                    <th class="" scope="col">
+                      <div class="slds-truncate" title="Last Name">Last Name</div>
+                    </th>
+                    <th class="" scope="col">
+                      <div class="slds-truncate" title="Title">Title</div>
+                    </th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <template for:each={applicationDeveloperContacts.data} for:item="appDevContact">
+                    <tr key={appDevContact.Id}>
+                        <th scope="col">
+                            <div>{appDevContact.LastName}</div>
+                        </th>
+                        <th scope="col">
+                            <div>{appDevContact.Title}</div>
+                        </th>
+                    </tr>
+                  </template>
+                </tbody>
+              </table>
+         </template>
+         <template if:false={applicationDeveloperContacts.data}>
+           <p>No Application Developer Contacts Found for this Account</p>
+         </template>
+        </lightning-card>
+</template>
